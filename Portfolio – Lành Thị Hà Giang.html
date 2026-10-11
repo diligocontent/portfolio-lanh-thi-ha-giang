@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Portfolio – Lành Thị Hà Giang</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=Be+Vietnam+Pro:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0e0a1f;--plum:#2a1748;--gold:#d4af6a;--gold2:#8c6d34;--paper:#f1e8d4;--paper2:#e6d9bd;--text:#2b2238;--mute:#6b5f78;color-scheme:dark;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}html,body{height:100%;margin:0}
+body{background:radial-gradient(ellipse at 50% 0,#3a2166 0,var(--ink) 60%) ,var(--ink);color:var(--paper);font:400 14.5px/1.6 "Be Vietnam Pro",system-ui,sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:
+radial-gradient(1.5px 1.5px at 12% 20%,#fff8 50%,transparent),radial-gradient(1.5px 1.5px at 80% 12%,#fff7 50%,transparent),radial-gradient(1px 1px at 65% 70%,#fff6 50%,transparent),radial-gradient(1.5px 1.5px at 25% 82%,#fff6 50%,transparent),radial-gradient(1px 1px at 92% 55%,#fff7 50%,transparent),radial-gradient(1px 1px at 40% 40%,#fff5 50%,transparent)}
+h1,h2,h3,h4,.serif{font-family:"Cormorant Garamond",Georgia,"Times New Roman",serif;font-weight:700;margin:0;line-height:1.1}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.stage{position:relative;height:100%;margin:0;padding:8px 8px 64px;display:block;perspective:2600px}
+.book{position:relative;height:calc(100vh - 72px);height:calc(100dvh - 72px);width:100%;min-height:560px}
+.pg{padding:44px clamp(30px,4vw,64px)}
+/* cover */
+.cover{position:absolute;inset:0;z-index:5;transform-origin:left center;transition:transform 1.4s cubic-bezier(.6,.05,.2,1);transform-style:preserve-3d;background:linear-gradient(135deg,#2e1a52,#150d2c);border:2px solid var(--gold2);border-radius:6px 14px 14px 6px;box-shadow:0 30px 80px #000a,inset 0 0 0 10px #150d2c,inset 0 0 0 11px var(--gold2);display:grid;place-content:center;text-align:center;padding:30px;backface-visibility:hidden}
+.cover.open{transform:rotateY(-178deg);pointer-events:none;visibility:hidden;transition:transform 1.4s cubic-bezier(.6,.05,.2,1),visibility 0s 1.4s}
+.cover .orn{color:var(--gold);letter-spacing:.7em;font-size:14px}
+.cover h1{font-size:clamp(54px,12vw,112px);color:var(--gold);letter-spacing:.06em;text-transform:uppercase;text-shadow:0 0 30px #d4af6a55;margin:14px 0 6px}
+.cover .nm{font:italic 500 clamp(22px,4vw,34px) "Cormorant Garamond",serif;color:var(--paper)}
+.cover .rl{margin:6px 0 28px;color:#b9a9d6;letter-spacing:.2em;font-size:12px;text-transform:uppercase}
+.btn{background:transparent;color:var(--gold);border:1px solid var(--gold);border-radius:999px;padding:11px 28px;font:500 14px "Be Vietnam Pro",sans-serif;cursor:pointer;letter-spacing:.08em}
+.btn:hover{background:var(--gold);color:var(--ink)}
+/* spreads */
+.spread{position:absolute;inset:0;display:none;grid-template-columns:1fr 1fr;background:var(--paper);border-radius:6px 14px 14px 6px;box-shadow:0 30px 80px #000a;color:var(--text);overflow:hidden}
+.spread.on{display:grid;animation:turn .7s ease both;transform-origin:left center}
+@keyframes turn{from{opacity:0;transform:rotateY(-22deg)}to{opacity:1;transform:none}}
+.spread:after{content:"";position:absolute;left:50%;top:0;bottom:0;width:36px;margin-left:-18px;background:linear-gradient(90deg,transparent,#0003 48%,#0004 50%,#0003 52%,transparent);pointer-events:none}
+.pg{overflow:auto;background:linear-gradient(var(--paper),var(--paper2));scrollbar-width:thin}
+.pg+.pg{background:linear-gradient(var(--paper2),var(--paper))}
+.pg h2{font-size:clamp(30px,4.4vw,42px);color:var(--plum)}
+.pg h3{font-size:24px;color:var(--plum);margin:16px 0 6px}
+.chap{display:block;font:italic 500 15px "Cormorant Garamond",serif;color:var(--gold2);margin-bottom:4px}
+.rule{height:1px;background:linear-gradient(90deg,var(--gold2),transparent);margin:10px 0 16px;border:0}
+.pg p{margin:0 0 10px}.pg ul{margin:0;padding-left:18px}.pg li{margin-bottom:4px}
+.fill{color:var(--gold2);font-style:italic}
+.img{border:1.5px dashed var(--gold2);border-radius:8px;display:grid;place-items:center;text-align:center;font-size:12px;color:var(--gold2);padding:8px;background:#d4af6a14}
+.img.arch{border-radius:200px 200px 8px 8px}
+.row{display:grid;gap:10px}.c2{grid-template-columns:1fr 1fr}.c3{grid-template-columns:repeat(3,1fr)}
+.ph9{aspect-ratio:9/16}.ph43{aspect-ratio:4/3}.ph34{aspect-ratio:3/4}.ph169{aspect-ratio:16/9}
+.num{font:700 42px/1 "Cormorant Garamond",serif;color:var(--plum)}
+.stat{border-top:1px solid var(--gold2);padding-top:8px}.stat small{display:block;color:var(--mute);font-size:12.5px;line-height:1.4}
+.toc a{display:flex;gap:8px;align-items:baseline;color:var(--text);text-decoration:none;padding:7px 0;border-bottom:1px dotted var(--gold2);font:600 21px "Cormorant Garamond",serif}
+.toc a span{flex:1;border:0}.toc a em{font:italic 500 15px "Cormorant Garamond",serif;color:var(--gold2)}.toc a:hover{color:#7a3fc4}
+.tags{display:flex;flex-wrap:wrap;gap:6px}.tags span{border:1px solid var(--gold2);border-radius:999px;padding:2px 12px;font-size:12.5px}
+.tl{border-left:1.5px solid var(--gold2);padding-left:16px;margin:0 0 14px 4px;position:relative}
+.tl:before{content:"✦";position:absolute;left:-8px;top:-2px;color:var(--gold2);background:var(--paper);font-size:13px}
+.tl small{color:var(--gold2);font-style:italic}.tl b{font:700 21px "Cormorant Garamond",serif;color:var(--plum);display:block}
+/* nav */
+.nav{position:fixed;left:0;right:0;bottom:calc(14px + env(safe-area-inset-bottom,0px));display:flex;justify-content:center;align-items:center;gap:16px;z-index:9}
+.nav button{width:44px;height:44px;padding:0;font-size:18px}.nav .cnt{min-width:96px;text-align:center;color:var(--gold);font:italic 500 17px "Cormorant Garamond",serif}
+.nav[hidden]{display:none}
+@media (max-width:760px){
+.book{height:auto;min-height:0}
+.stage{place-items:start center;padding-top:14px}
+.cover{position:relative;min-height:76vh}.cover.open{position:absolute;inset:0}
+.spread{position:relative;display:none;grid-template-columns:1fr}.spread.on{display:block}
+.spread:after{display:none}.pg{overflow:visible;padding:26px 22px}
+.pg+.pg{border-top:1px solid var(--gold2)}}
+@media (prefers-reduced-motion:reduce){.cover,.cover.open{transition:none}.spread.on{animation:none}}
+</style>
+</head>
+<body>
+<main class="stage"><div class="book" id="book">
+
+<section class="cover" id="cover" aria-label="Bìa sách">
+<div class="orn">✦ ✦ ✦</div>
+<h1>Portfolio</h1>
+<div class="nm">Lành Thị Hà Giang</div>
+<div class="rl">Marketing Executive</div>
+<div><button class="btn" id="open">Mở sách</button></div>
+</section>
+
+<!-- Trang 1: Mục lục + Giới thiệu -->
+<section class="spread">
+<div class="pg"><span class="chap">Mục lục</span><h2>Những chương trong sách</h2><hr class="rule">
+<nav class="toc">
+<a href="#" data-go="0"><span>Giới thiệu</span><em>tr. 1</em></a>
+<a href="#" data-go="1"><span>Năng lực &amp; công cụ</span><em>tr. 2</em></a>
+<a href="#" data-go="2"><span>Hành trình</span><em>tr. 3</em></a>
+<a href="#" data-go="3"><span>Video production</span><em>tr. 4</em></a>
+<a href="#" data-go="4"><span>Quản trị hiệu suất</span><em>tr. 5</em></a>
+<a href="#" data-go="5"><span>Thiết kế &amp; hình ảnh</span><em>tr. 6</em></a>
+<a href="#" data-go="6"><span>KOL/KOC &amp; livestream</span><em>tr. 7</em></a>
+<a href="#" data-go="7"><span>Liên hệ</span><em>tr. 8</em></a>
+</nav></div>
+<div class="pg"><span class="chap">Chương I</span><h2>Giới thiệu</h2><hr class="rule">
+<div class="row c2" style="grid-template-columns:120px 1fr;align-items:start"><div class="img arch ph34">Ảnh chân dung</div>
+<div><p><b>Lành Thị Hà Giang</b><br>Marketing Executive</p><p>Định hướng Content &amp; Social Commerce, triển khai nội dung đa nền tảng theo mục tiêu thương hiệu và bán hàng.</p></div></div>
+<p class="fill">[Câu mở đầu của bạn: bạn là ai, bạn mang lại giá trị gì cho nhà tuyển dụng, 2–3 câu.]</p>
+<h3>Điểm nổi bật</h3>
+<div class="row c3"><div class="stat"><div class="num">30+</div><small>video mỗi tháng</small></div><div class="stat"><div class="num">424K+</div><small>lượt xem TikTok</small></div><div class="stat"><div class="num">8K+</div><small>followers organic</small></div></div>
+</div></section>
+
+<!-- Trang 2: Năng lực -->
+<section class="spread">
+<div class="pg"><span class="chap">Chương II</span><h2>Năng lực cốt lõi</h2><hr class="rule">
+<h3>Content planning &amp; creative</h3><ul><li>Content Planning &amp; Campaign Calendar</li><li>Trend / Market / Competitor Research</li><li>Concept, Script &amp; Copywriting</li><li>Multi-platform Distribution</li></ul>
+<h3>Content production</h3><ul><li>Short-form End-to-End</li><li>Shooting, On-camera, Editing</li><li>Visual Content bằng Canva &amp; AI</li><li>Livestream Host / Operation</li></ul>
+<h3>Social commerce &amp; performance</h3><ul><li>Campaign &amp; Promotion Support</li><li>Content Performance Tracking</li><li>KOL/KOC Coordination</li></ul></div>
+<div class="pg"><h3 style="margin-top:0">Công cụ</h3>
+<div class="tags"><span>CapCut</span><span>Canva</span><span>TikTok Business</span><span>Shopee Seller Center</span><span>Zalo OA</span><span>AI Tools</span><span>Excel</span><span>PowerPoint</span></div>
+<h3>Học vấn</h3><div class="tl"><b>Đại học Thương mại</b><small>2022 – 2026</small><p>Marketing Thương mại, tốt nghiệp loại Giỏi. CĐR Tiếng Anh Bậc 5. Giải Nghiên cứu khoa học cấp Trường.</p></div>
+<h3>Mức độ thành thạo <span class="fill" style="font-size:14px">(tuỳ chọn)</span></h3>
+<p class="fill">[Ví dụ: CapCut – thành thạo; Canva – thành thạo; Excel – khá…]</p></div></section>
+
+<!-- Trang 3: Hành trình -->
+<section class="spread">
+<div class="pg"><span class="chap">Chương III</span><h2>Hành trình làm việc</h2><hr class="rule">
+<div class="tl"><small>11/2025 – hiện tại</small><b>Công ty CP Diligo</b><p>Marketing Executive. Content planning, sản xuất short-form cho 3 kênh TikTok, social commerce, livestream, điều phối KOL/KOC, theo dõi hiệu suất, khảo sát thị trường.</p></div>
+<div class="tl"><small>07/2025 – 09/2025</small><b>Công ty CP TMĐT Sinviet</b><p>Thực tập sinh Media. Sản xuất video TikTok cho Sunhouse, Canifa, Inochi; xây dựng và quản lý kênh du lịch EcoTravel.</p></div></div>
+<div class="pg"><h3 style="margin-top:0">Dự án học tập</h3>
+<div class="tl"><small>02/2025 – 05/2025</small><b>ELPIDA</b><p>Kế hoạch Digital Marketing: Content Plan Facebook 3 tháng, 03 bài viết.</p></div>
+<div class="tl"><small>08/2025 – 11/2025</small><b>SORA PREBI</b><p>Kế hoạch sáng tạo và thiết kế nội dung: 04 bài Facebook, 03 bài Google Site.</p></div>
+<div class="img ph169">Ảnh minh hoạ dự án / logo công ty</div>
+<p class="fill" style="margin-top:10px">[Thêm 1 dòng kết quả nổi bật cho mỗi vị trí.]</p></div></section>
+
+<!-- Trang 4: Video production -->
+<section class="spread">
+<div class="pg"><span class="chap">Chương IV · Project</span><h2>Content viral</h2><hr class="rule">
+<p><b>Mục tiêu:</b> tăng nhận diện và tương tác. <span class="fill">[Tên kênh / chiến dịch]</span></p>
+<div class="row c3"><div class="img ph9">Video 1</div><div class="img ph9">Video 2</div><div class="img ph9">Video 3</div></div>
+<h3>Vai trò của mình</h3><ul><li>Nghiên cứu trend, lên idea, viết script</li><li>Setup, quay, on-camera, editing, publishing</li></ul>
+<div class="row c2" style="margin-top:10px"><div class="stat"><div class="num">[000K]</div><small>lượt xem</small></div><div class="stat"><div class="num">[0%]</div><small>tỉ lệ tương tác</small></div></div></div>
+<div class="pg"><span class="chap">Chương IV · Project</span><h2>Content bán hàng</h2><hr class="rule">
+<p><b>Mục tiêu:</b> chuyển đổi, tăng doanh thu. <span class="fill">[Tên sản phẩm / chiến dịch]</span></p>
+<div class="row c3"><div class="img ph9">Video 4</div><div class="img ph9">Video 5</div><div class="img ph9">Video 6</div></div>
+<h3>Vai trò của mình</h3><ul><li>Hỗ trợ listing, visual, Flash Sale, CTKM</li><li>Theo dõi CTR, Clicks, Orders, GMV</li></ul>
+<div class="row c2" style="margin-top:10px"><div class="stat"><div class="num">23,4%</div><small>GMV từ video / tổng GMV</small></div><div class="stat"><div class="num">[000]</div><small>đơn hàng</small></div></div></div></section>
+
+<!-- Trang 5: Hiệu suất -->
+<section class="spread">
+<div class="pg"><span class="chap">Chương V</span><h2>Quản trị hiệu suất content</h2><hr class="rule">
+<p>Theo dõi và phân tích hiệu suất nội dung qua dashboard để tối ưu chiến lược dựa trên dữ liệu.</p>
+<h3>Mục tiêu</h3><ul><li>Theo dõi hiệu suất theo thời gian thực</li><li>Đo lường đóng góp doanh thu</li><li>Phân tích insight, tối ưu nội dung</li></ul>
+<div class="img ph169" style="margin-top:14px">Ảnh dashboard (mẫu nội bộ)</div></div>
+<div class="pg"><h3 style="margin-top:0">Các chỉ số theo dõi</h3>
+<div class="row c2">
+<div class="stat"><b class="serif" style="font-size:21px">Performance</b><small>Lượt xem, thời gian xem, tỉ lệ xem hết</small><div class="num fill">[000]</div></div>
+<div class="stat"><b class="serif" style="font-size:21px">Engagement</b><small>Thích, bình luận, chia sẻ, ER</small><div class="num fill">[0%]</div></div>
+<div class="stat"><b class="serif" style="font-size:21px">Conversion</b><small>CTR, Clicks, Orders</small><div class="num fill">[0%]</div></div>
+<div class="stat"><b class="serif" style="font-size:21px">Revenue</b><small>GMV, doanh thu</small><div class="num fill">[000]</div></div></div>
+<h3>Phân tích &amp; đề xuất</h3><p class="fill">[Video nổi bật nhất, định dạng hiệu quả nhất, và điều bạn đề xuất điều chỉnh.]</p></div></section>
+
+<!-- Trang 6: Thiết kế -->
+<section class="spread">
+<div class="pg"><span class="chap">Chương VI</span><h2>Thiết kế &amp; hình ảnh</h2><hr class="rule">
+<p>Visual bằng Canva và AI, phối hợp Design Team hoàn thiện campaign assets.</p>
+<h3>Moodboard</h3><div class="row c3"><div class="img ph34">Ảnh 1</div><div class="img ph34">Ảnh 2</div><div class="img ph34">Ảnh 3</div></div>
+<h3>Visual direction</h3><p class="fill">[Concept, bảng màu, phong cách hình ảnh bạn chọn cho chiến dịch.]</p></div>
+<div class="pg"><h3 style="margin-top:0">Social carousel</h3><div class="row c3"><div class="img ph34">Slide 1</div><div class="img ph34">Slide 2</div><div class="img ph34">Slide 3</div></div>
+<h3>Social post</h3><div class="row c3"><div class="img ph34">Post 1</div><div class="img ph34">Post 2</div><div class="img ph34">Post 3</div></div></div></section>
+
+<!-- Trang 7: KOL/KOC -->
+<section class="spread">
+<div class="pg"><span class="chap">Chương VII</span><h2>KOL/KOC &amp; Livestream</h2><hr class="rule">
+<div class="stat"><div class="num">300+</div><small>video triển khai cùng KOL/KOC</small></div>
+<h3>Điều phối KOL/KOC</h3><ul><li>Booking, xây dựng brief</li><li>Theo dõi tiến độ sản xuất, đăng tải, hiệu quả</li></ul>
+<div class="row c2" style="margin-top:12px"><div class="img ph43">Ảnh brief / bảng theo dõi</div><div class="img ph43">Ảnh KOL/KOC</div></div></div>
+<div class="pg"><h3 style="margin-top:0">Livestream</h3>
+<ul><li>Vai trò Host / Support</li><li>Setup, ghim sản phẩm, tương tác khách, xử lý tình huống</li></ul>
+<div class="row c2" style="margin:12px 0"><div class="stat"><div class="num">[00]</div><small>phiên live</small></div><div class="stat"><div class="num">[000]</div><small>đơn / phiên</small></div></div>
+<div class="img ph169">Ảnh buổi livestream</div></div></section>
+
+<!-- Trang 8: Liên hệ -->
+<section class="spread">
+<div class="pg"><span class="chap">Lời kết</span><h2>Cảm ơn bạn đã đọc</h2><hr class="rule">
+<p class="fill">[Một câu kết: bạn đang tìm cơ hội gì, bạn muốn làm việc cùng ai.]</p>
+<div class="img arch ph34" style="max-width:200px;margin-top:18px">Ảnh chân dung</div></div>
+<div class="pg"><h2>Liên hệ</h2><hr class="rule">
+<p>hagiang.20122003@gmail.com</p><p>0388 527 110</p><p>Phú Mỹ, Từ Liêm, Hà Nội</p>
+<p class="fill">[Link TikTok / LinkedIn / Behance nếu có]</p>
+<div class="img ph34" style="max-width:150px;margin-top:14px">Mã QR</div></div></section>
+
+</div></main>
+
+<div class="nav" id="nav" hidden>
+<button class="btn" id="prev" aria-label="Trang trước">‹</button><div class="cnt" id="cnt"></div><button class="btn" id="next" aria-label="Trang sau">›</button>
+</div>
+
+<script>
+(function(){
+var sp=[].slice.call(document.querySelectorAll('.spread')),cv=document.getElementById('cover'),nav=document.getElementById('nav'),cnt=document.getElementById('cnt'),i=-1;
+function go(n){
+ if(n<0){i=-1;sp.forEach(function(s){s.classList.remove('on')});cv.classList.remove('open');nav.hidden=true;return}
+ if(n>=sp.length)return;
+ i=n;sp.forEach(function(s,k){s.classList.toggle('on',k===n)});
+ cv.classList.add('open');nav.hidden=false;
+ cnt.textContent='Trang '+(n+1)+' / '+sp.length;
+ window.scrollTo(0,0);
+}
+document.getElementById('open').onclick=function(){go(0)};
+document.getElementById('next').onclick=function(){go(i+1)};
+document.getElementById('prev').onclick=function(){go(i-1)};
+[].forEach.call(document.querySelectorAll('[data-go]'),function(a){a.onclick=function(e){e.preventDefault();go(+a.dataset.go+0)}});
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight')go(i+1);if(e.key==='ArrowLeft')go(i-1)});
+})();
+</script>
+</body>
+</html>
